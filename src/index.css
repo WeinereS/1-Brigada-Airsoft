@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --color-olive: #556B2F;
+  --color-base-black: #0B0B0B;
+  --color-tactical-gray: #2F2F2F;
+  --color-muted-gray: #A9A9A9;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-base-black text-white font-sans;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-base-black;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-olive/30 hover:bg-olive/50 transition-colors;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-olive text-white;
+  }
+
+  /* HUD Effects */
+  .hud-scanline {
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(0, 0, 0, 0.1) 51%,
+      transparent 52%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .hud-grid {
+    background-image: 
+      linear-gradient(rgba(85, 107, 47, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(85, 107, 47, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  .hud-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+  }
+
+  @keyframes radar-sweep {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .radar-sweep {
+    animation: radar-sweep 4s linear infinite;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
