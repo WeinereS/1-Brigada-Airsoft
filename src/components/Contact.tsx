@@ -31,9 +31,9 @@ export default function Contact() {
             
             <div className="space-y-10">
               {[
-                { icon: <Mail size={20} />, label: "E-mail Operacional", value: "hq@1brigadaairsoft.com.br", tag: "SECURE_MAIL" },
-                { icon: <Phone size={20} />, label: "WhatsApp Tático", value: "+55 (11) 98765-4321", tag: "COMMS_LINE" },
-                { icon: <MapPin size={20} />, label: "Base de Operações", value: "Estrada Velha, KM 42 - São Paulo, SP", tag: "GRID_COORD" }
+                { icon: <Mail size={20} />, label: "E-mail Operacional", value: "brigadarsoft@gmail.com", tag: "SECURE_MAIL" },
+                { icon: <Phone size={20} />, label: "WhatsApp Tático", value: "+55 64 9933-7603", tag: "COMMS_LINE" },
+                { icon: <MapPin size={20} />, label: "Base de Operações", value: "Rua PS25, 20 Portal do Sol - Jataí-GO", tag: "GRID_COORD" }
               ].map((item, idx) => (
                 <motion.div 
                   key={idx}

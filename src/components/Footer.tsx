@@ -43,15 +43,15 @@ export default function Footer() {
             <ul className="space-y-5">
               <li className="flex items-start gap-4 text-muted-gray hover:text-white transition-all group cursor-default">
                 <MapPin size={18} className="text-olive/40 group-hover:text-olive shrink-0 transition-colors" />
-                <span className="text-sm font-light">Estrada Velha, KM 42 - São Paulo, SP // Setor 7-G</span>
+                <span className="text-sm font-light">Rua PS25, 20 Portal do Sol - Jataí-GO</span>
               </li>
               <li className="flex items-center gap-4 text-muted-gray hover:text-white transition-all group cursor-default">
                 <Phone size={18} className="text-olive/40 group-hover:text-olive shrink-0 transition-colors" />
-                <span className="text-sm font-light">+55 (11) 98765-4321</span>
+                <span className="text-sm font-light">+55 64 9933-7603</span>
               </li>
               <li className="flex items-center gap-4 text-muted-gray hover:text-white transition-all group cursor-default">
                 <Mail size={18} className="text-olive/40 group-hover:text-olive shrink-0 transition-colors" />
-                <span className="text-sm font-light">hq@1brigadaairsoft.com.br</span>
+                <span className="text-sm font-light">brigadarsoft@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -63,10 +63,10 @@ export default function Footer() {
               <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-olive font-bold">Navegação</h4>
             </div>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
-              {["Início", "Mapa", "Modos", "Regras", "Equipes", "Sobre", "Alistar"].map((item) => (
+              {["Início", "Mapa", "Modos", "Regras", "Relatório", "Equipes", "Sobre", "Contato"].map((item) => (
                 <li key={item}>
                   <a 
-                    href={`#${item.toLowerCase()}`} 
+                    href={item === "Relatório" ? "#report" : `#${item.toLowerCase()}`} 
                     className="text-muted-gray hover:text-olive text-[11px] transition-all font-mono uppercase tracking-widest flex items-center gap-2 group"
                   >
                     <span className="w-1 h-1 bg-olive/20 group-hover:bg-olive transition-colors"></span>
@@ -85,13 +85,15 @@ export default function Footer() {
             </div>
             <div className="flex gap-4">
               {[
-                { icon: <Instagram size={20} />, label: "Instagram" },
-                { icon: <MessageCircle size={20} />, label: "WhatsApp" },
-                { icon: <Disc size={20} />, label: "Discord" }
+                { icon: <Instagram size={20} />, label: "Instagram", href: "https://www.instagram.com/1brigadajti/" },
+                { icon: <MessageCircle size={20} />, label: "WhatsApp", href: "https://wa.me/556499337603" },
+                { icon: <Disc size={20} />, label: "Discord", href: "#" }
               ].map((social, idx) => (
                 <motion.a 
                   key={idx}
-                  href="#" 
+                  href={social.href}
+                  target={social.href !== "#" ? "_blank" : undefined}
+                  rel={social.href !== "#" ? "noopener noreferrer" : undefined}
                   whileHover={{ y: -3, scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-12 h-12 bg-tactical-gray/10 border border-white/5 flex items-center justify-center text-muted-gray hover:text-olive hover:border-olive/50 transition-all rounded-sm relative group"

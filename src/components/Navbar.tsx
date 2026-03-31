@@ -19,6 +19,7 @@ export default function Navbar() {
     { name: "Mapa", href: "#map" },
     { name: "Modos", href: "#modes" },
     { name: "Regras", href: "#field-rules" },
+    { name: "Relatório", href: "#report" },
     { name: "Equipes", href: "#teams" },
     { name: "Sobre", href: "#about" },
     { name: "Contato", href: "#contact" },
@@ -76,17 +77,18 @@ export default function Navbar() {
           
           <div className="h-8 w-px bg-white/10 mx-2"></div>
           
-          <motion.button 
+          <motion.a 
+            href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative bg-olive/10 hover:bg-olive text-white px-6 py-2.5 text-[10px] font-mono uppercase tracking-[0.2em] transition-all border border-olive/30 overflow-hidden"
+            className="group relative bg-olive/10 hover:bg-olive text-white px-6 py-2.5 text-[10px] font-mono uppercase tracking-[0.2em] transition-all border border-olive/30 overflow-hidden inline-flex items-center justify-center"
           >
             <span className="relative z-10 flex items-center gap-2">
               <Activity size={14} className="animate-pulse" />
               Alistar-se
             </span>
             <div className="absolute inset-0 bg-olive translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-          </motion.button>
+          </motion.a>
         </div>
 
         {/* Mobile Toggle */}
@@ -122,10 +124,14 @@ export default function Navbar() {
                   <span className="text-[10px] text-olive/40 group-hover:text-olive">0{idx + 1}</span>
                 </motion.a>
               ))}
-              <button className="bg-olive text-white py-4 font-mono text-xs uppercase tracking-[0.3em] border border-white/10 w-full mt-4 flex items-center justify-center gap-2">
+              <a 
+                href="#contact"
+                onClick={() => setIsOpen(false)}
+                className="bg-olive text-white py-4 font-mono text-xs uppercase tracking-[0.3em] border border-white/10 w-full mt-4 flex items-center justify-center gap-2"
+              >
                 <Activity size={16} className="animate-pulse" />
                 Alistar-se Agora
-              </button>
+              </a>
             </div>
             
             {/* Tactical Decoration for Mobile Menu */}

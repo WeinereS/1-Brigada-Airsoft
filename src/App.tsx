@@ -9,6 +9,7 @@ import GameModes from "./components/GameModes";
 import Rules from "./components/Rules";
 import TeamManager from "./components/TeamManager";
 import About from "./components/About";
+import TacticalReport from "./components/TacticalReport";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -66,6 +67,7 @@ export default function App() {
         <Rules />
         <TeamManager />
         <About />
+        <TacticalReport />
         <Contact />
       </main>
       <Footer />

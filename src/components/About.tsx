@@ -5,7 +5,7 @@ export default function About() {
   const stats = [
     { icon: <Users size={20} />, label: "Operadores Ativos", value: "150+", color: "text-olive" },
     { icon: <Target size={20} />, label: "Missões Cumpridas", value: "480", color: "text-white" },
-    { icon: <Shield size={20} />, label: "Anos de Operação", value: "12", color: "text-olive" },
+    { icon: <Shield size={20} />, label: "Anos de Operação", value: "10", color: "text-olive" },
   ];
 
   const values = [
