@@ -19,6 +19,7 @@ export default function Navbar() {
     { name: "Mapa", href: "#map" },
     { name: "Modos", href: "#modes" },
     { name: "Regras", href: "#field-rules" },
+    { name: "Inteligência", href: "#intelligence" },
     { name: "Relatório", href: "#report" },
     { name: "Equipes", href: "#teams" },
     { name: "Sobre", href: "#about" },

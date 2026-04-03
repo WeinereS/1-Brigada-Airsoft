@@ -63,14 +63,24 @@ export default function Footer() {
               <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-olive font-bold">Navegação</h4>
             </div>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
-              {["Início", "Mapa", "Modos", "Regras", "Relatório", "Equipes", "Sobre", "Contato"].map((item) => (
-                <li key={item}>
+              {[
+                { name: "Início", href: "#home" },
+                { name: "Mapa", href: "#map" },
+                { name: "Modos", href: "#modes" },
+                { name: "Regras", href: "#field-rules" },
+                { name: "Inteligência", href: "#intelligence" },
+                { name: "Relatório", href: "#report" },
+                { name: "Equipes", href: "#teams" },
+                { name: "Sobre", href: "#about" },
+                { name: "Contato", href: "#contact" }
+              ].map((item) => (
+                <li key={item.name}>
                   <a 
-                    href={item === "Relatório" ? "#report" : `#${item.toLowerCase()}`} 
+                    href={item.href} 
                     className="text-muted-gray hover:text-olive text-[11px] transition-all font-mono uppercase tracking-widest flex items-center gap-2 group"
                   >
                     <span className="w-1 h-1 bg-olive/20 group-hover:bg-olive transition-colors"></span>
-                    {item}
+                    {item.name}
                   </a>
                 </li>
               ))}
