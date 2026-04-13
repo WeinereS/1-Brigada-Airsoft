@@ -31,9 +31,6 @@ export default function About() {
 
   return (
     <section id="about" className="py-32 bg-base-black relative overflow-hidden">
-      {/* Background scanline effect */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]"></div>
-      
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <motion.div
@@ -152,20 +149,6 @@ export default function About() {
                 <div className="absolute inset-0 bg-olive/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
               </div>
               
-              {/* HUD Elements */}
-              <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-6 left-6 w-16 h-16 border-t-2 border-l-2 border-white/10 group-hover:border-olive/40 transition-colors duration-700"></div>
-                <div className="absolute top-6 right-6 w-16 h-16 border-t-2 border-r-2 border-white/10 group-hover:border-olive/40 transition-colors duration-700"></div>
-                <div className="absolute bottom-6 left-6 w-16 h-16 border-b-2 border-l-2 border-white/10 group-hover:border-olive/40 transition-colors duration-700"></div>
-                <div className="absolute bottom-6 right-6 w-16 h-16 border-b-2 border-r-2 border-white/10 group-hover:border-olive/40 transition-colors duration-700"></div>
-                
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border border-white/5 rounded-full flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 bg-olive rounded-full animate-ping"></div>
-                  <div className="absolute inset-0 border-t-2 border-olive/40 rounded-full animate-spin-slow"></div>
-                  <div className="absolute inset-4 border-b-2 border-white/10 rounded-full animate-spin-reverse"></div>
-                </div>
-              </div>
-              
               <div className="absolute bottom-10 left-10 bg-base-black/90 backdrop-blur-xl border border-olive/30 p-5 min-w-[200px]">
                 <div className="font-mono text-[9px] text-olive uppercase tracking-[0.3em] mb-3 font-bold">Status de Prontidão</div>
                 <div className="flex items-center gap-3">
@@ -185,22 +168,6 @@ export default function About() {
         </div>
       </div>
 
-      <style>{`
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes spin-reverse {
-          from { transform: rotate(360deg); }
-          to { transform: rotate(0deg); }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 12s linear infinite;
-        }
-        .animate-spin-reverse {
-          animation: spin-reverse 8s linear infinite;
-        }
-      `}</style>
     </section>
   );
 }

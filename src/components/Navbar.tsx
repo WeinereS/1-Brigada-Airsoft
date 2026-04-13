@@ -1,10 +1,12 @@
 import { motion, AnimatePresence } from "motion/react";
 import { Shield, Menu, X, Activity } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,15 +17,12 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Início", href: "#home" },
-    { name: "Mapa", href: "#map" },
-    { name: "Modos", href: "#modes" },
-    { name: "Regras", href: "#field-rules" },
-    { name: "Inteligência", href: "#intelligence" },
-    { name: "Relatório", href: "#report" },
-    { name: "Equipes", href: "#teams" },
-    { name: "Sobre", href: "#about" },
-    { name: "Contato", href: "#contact" },
+    { name: "Início", href: "/" },
+    { name: "Gameplay", href: "/gameplay" },
+    { name: "Inteligência", href: "/intelligence" },
+    { name: "Galeria Tática", href: "/gallery" },
+    { name: "Sobre", href: "/about" },
+    { name: "Contato", href: "/contact" },
   ];
 
   return (
@@ -39,57 +38,68 @@ export default function Navbar() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3 group cursor-pointer"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <div className="relative w-10 h-10 flex items-center justify-center">
-            <div className="absolute inset-0 bg-olive rotate-45 border border-white/20 group-hover:rotate-90 transition-transform duration-500"></div>
-            <Shield className="relative text-white w-5 h-5" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-mono font-bold text-lg tracking-tighter uppercase leading-none">
-              1º Brigada <span className="text-olive">Airsoft</span>
-            </span>
-            <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-olive/60 mt-1">
-              Tactical Command Unit
-            </span>
-          </div>
+          <Link to="/" className="flex items-center gap-3">
+            <div className="relative w-10 h-10 flex items-center justify-center">
+              <div className="absolute inset-0 bg-olive rotate-45 border border-white/20 group-hover:rotate-90 transition-transform duration-500"></div>
+              <Shield className="relative text-white w-5 h-5" />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-mono font-bold text-lg tracking-tighter uppercase leading-none">
+                1º Brigada <span className="text-olive">Airsoft</span>
+              </span>
+              <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-olive/60 mt-1">
+                Tactical Command Unit
+              </span>
+            </div>
+          </Link>
         </motion.div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-10">
           <div className="flex items-center gap-8">
             {navLinks.map((link, idx) => (
-              <motion.a
+              <motion.div
                 key={link.name}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.05 }}
-                href={link.href}
-                className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-gray hover:text-olive transition-all relative group"
               >
-                <span className="relative z-10">{link.name}</span>
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-olive transition-all duration-300 group-hover:w-full"></span>
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] opacity-0 group-hover:opacity-100 transition-opacity text-olive">
-                  0{idx + 1}
-                </span>
-              </motion.a>
+                <Link
+                  to={link.href}
+                  className={`font-mono text-[11px] uppercase tracking-[0.2em] transition-all relative group ${
+                    location.pathname === link.href ? "text-olive" : "text-muted-gray hover:text-olive"
+                  }`}
+                >
+                  <span className="relative z-10">{link.name}</span>
+                  <span className={`absolute -bottom-1 left-0 h-px bg-olive transition-all duration-300 ${
+                    location.pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
+                  }`}></span>
+                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] opacity-0 group-hover:opacity-100 transition-opacity text-olive">
+                    0{idx + 1}
+                  </span>
+                </Link>
+              </motion.div>
             ))}
           </div>
           
           <div className="h-8 w-px bg-white/10 mx-2"></div>
           
-          <motion.a 
-            href="#contact"
+          <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative bg-olive/10 hover:bg-olive text-white px-6 py-2.5 text-[10px] font-mono uppercase tracking-[0.2em] transition-all border border-olive/30 overflow-hidden inline-flex items-center justify-center"
           >
-            <span className="relative z-10 flex items-center gap-2">
-              <Activity size={14} className="animate-pulse" />
-              Alistar-se
-            </span>
-            <div className="absolute inset-0 bg-olive translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-          </motion.a>
+            <Link 
+              to="/contact"
+              className="group relative bg-olive/10 hover:bg-olive text-white px-6 py-2.5 text-[10px] font-mono uppercase tracking-[0.2em] transition-all border border-olive/30 overflow-hidden inline-flex items-center justify-center"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                <Activity size={14} className="animate-pulse" />
+                Alistar-se
+              </span>
+              <div className="absolute inset-0 bg-olive translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+            </Link>
+          </motion.div>
         </div>
 
         {/* Mobile Toggle */}
@@ -112,27 +122,32 @@ export default function Navbar() {
           >
             <div className="p-8 flex flex-col gap-6">
               {navLinks.map((link, idx) => (
-                <motion.a
+                <motion.div
                   key={link.name}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.05 }}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="font-mono text-sm uppercase tracking-[0.3em] text-muted-gray hover:text-olive transition-colors flex items-center justify-between group"
                 >
-                  {link.name}
-                  <span className="text-[10px] text-olive/40 group-hover:text-olive">0{idx + 1}</span>
-                </motion.a>
+                  <Link
+                    to={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`font-mono text-sm uppercase tracking-[0.3em] transition-colors flex items-center justify-between group ${
+                      location.pathname === link.href ? "text-olive" : "text-muted-gray hover:text-olive"
+                    }`}
+                  >
+                    {link.name}
+                    <span className="text-[10px] text-olive/40 group-hover:text-olive">0{idx + 1}</span>
+                  </Link>
+                </motion.div>
               ))}
-              <a 
-                href="#contact"
+              <Link 
+                to="/contact"
                 onClick={() => setIsOpen(false)}
                 className="bg-olive text-white py-4 font-mono text-xs uppercase tracking-[0.3em] border border-white/10 w-full mt-4 flex items-center justify-center gap-2"
               >
                 <Activity size={16} className="animate-pulse" />
                 Alistar-se Agora
-              </a>
+              </Link>
             </div>
             
             {/* Tactical Decoration for Mobile Menu */}

@@ -1,21 +1,23 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronUp } from "lucide-react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import HUDOverlay from "./components/HUDOverlay";
-import FieldMap from "./components/FieldMap";
-import GameModes from "./components/GameModes";
-import Rules from "./components/Rules";
-import TeamManager from "./components/TeamManager";
+import Home from "./components/Home";
+import Gameplay from "./components/Gameplay";
+import Intelligence from "./components/Intelligence";
+import TacticalGallery from "./components/TacticalGallery";
 import About from "./components/About";
-import IntelligenceCenter from "./components/IntelligenceCenter";
-import TacticalReport from "./components/TacticalReport";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -58,22 +60,22 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-base-black selection:bg-olive selection:text-white font-sans text-white">
-      <HUDOverlay />
-      <Navbar />
-      <main>
-        <Hero />
-        <FieldMap />
-        <GameModes />
-        <Rules />
-        <TeamManager />
-        <About />
-        <IntelligenceCenter />
-        <TacticalReport />
-        <Contact />
-      </main>
-      <Footer />
-      <ScrollToTop />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-base-black selection:bg-olive selection:text-white font-sans text-white">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/gameplay" element={<Gameplay />} />
+            <Route path="/intelligence" element={<Intelligence />} />
+            <Route path="/gallery" element={<TacticalGallery />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+        <ScrollToTop />
+      </div>
+    </Router>
   );
 }

@@ -1,5 +1,6 @@
 import { Shield, Instagram, MessageCircle, Disc, Mail, Phone, MapPin, Activity, Terminal, Globe, ShieldCheck } from "lucide-react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,15 +16,17 @@ export default function Footer() {
           {/* Column 1: Brand */}
           <div className="space-y-8">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-olive flex items-center justify-center rounded-sm rotate-45 border border-white/20 shadow-[0_0_15px_rgba(85,107,47,0.3)]">
-                <Shield className="-rotate-45 text-white w-5 h-5" />
-              </div>
-              <div>
-                <span className="font-mono font-bold text-xl tracking-tighter uppercase block leading-none">
-                  1º Brigada <span className="text-olive">Airsoft</span>
-                </span>
-                <span className="text-[8px] font-mono text-muted-gray uppercase tracking-[0.4em] mt-1 block">Tactical Command Unit</span>
-              </div>
+              <Link to="/" className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-olive flex items-center justify-center rounded-sm rotate-45 border border-white/20 shadow-[0_0_15px_rgba(85,107,47,0.3)]">
+                  <Shield className="-rotate-45 text-white w-5 h-5" />
+                </div>
+                <div>
+                  <span className="font-mono font-bold text-xl tracking-tighter uppercase block leading-none">
+                    1º Brigada <span className="text-olive">Airsoft</span>
+                  </span>
+                  <span className="text-[8px] font-mono text-muted-gray uppercase tracking-[0.4em] mt-1 block">Tactical Command Unit</span>
+                </div>
+              </Link>
             </div>
             <p className="text-muted-gray text-sm leading-relaxed font-light border-l border-olive/20 pl-4">
               Associação dedicada à simulação militar de alto nível. Honra, disciplina e estratégia em cada missão desdobrada no terreno.
@@ -64,24 +67,21 @@ export default function Footer() {
             </div>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
               {[
-                { name: "Início", href: "#home" },
-                { name: "Mapa", href: "#map" },
-                { name: "Modos", href: "#modes" },
-                { name: "Regras", href: "#field-rules" },
-                { name: "Inteligência", href: "#intelligence" },
-                { name: "Relatório", href: "#report" },
-                { name: "Equipes", href: "#teams" },
-                { name: "Sobre", href: "#about" },
-                { name: "Contato", href: "#contact" }
+                { name: "Início", href: "/" },
+                { name: "Gameplay", href: "/gameplay" },
+                { name: "Inteligência", href: "/intelligence" },
+                { name: "Galeria Tática", href: "/gallery" },
+                { name: "Sobre", href: "/about" },
+                { name: "Contato", href: "/contact" }
               ].map((item) => (
                 <li key={item.name}>
-                  <a 
-                    href={item.href} 
+                  <Link 
+                    to={item.href} 
                     className="text-muted-gray hover:text-olive text-[11px] transition-all font-mono uppercase tracking-widest flex items-center gap-2 group"
                   >
                     <span className="w-1 h-1 bg-olive/20 group-hover:bg-olive transition-colors"></span>
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

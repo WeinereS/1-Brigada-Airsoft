@@ -101,20 +101,12 @@ export default function FieldMap() {
             className="lg:col-span-8 relative"
           >
             <div className="relative border border-olive/30 bg-tactical-gray/10 overflow-hidden group rounded-sm">
-              {/* Scanline Effect */}
-              <div className="absolute inset-0 pointer-events-none z-20 opacity-5 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]"></div>
-              
               <img
                 src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=2066&auto=format&fit=crop"
                 alt="Tactical Map"
                 className="w-full h-auto grayscale brightness-[0.3] opacity-60 transition-all duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
-
-              {/* Radar Sweep Effect */}
-              <div className="absolute inset-0 pointer-events-none z-15 overflow-hidden">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] radar-sweep bg-gradient-to-r from-olive/10 via-transparent to-transparent opacity-30"></div>
-              </div>
 
               {/* Grid Lines Overlay */}
               <div className="absolute inset-0 grid grid-cols-8 grid-rows-8 pointer-events-none z-10">
